@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pharmacy: #0F766E;
+  --pharmacy-light: #CCFBF1;
+  --pharmacy-dark: #134E4A;
+  --surgery: #005EB8;
+  --surgery-light: #E8F1FC;
+  --surgery-dark: #003087;
+  --resolved: #16A34A;
+  --referred: #D97706;
+  --bg: #F0F4F5;
+  --card: #FFFFFF;
+  --border: #D1D9E0;
+  --text: #212B32;
+  --muted: #768692;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background: #1E293B;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app-frame {
+  width: 1024px;
+  height: 768px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1100px) {
+  #app-frame {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollable::-webkit-scrollbar { width: 4px; }
+.scrollable::-webkit-scrollbar-track { background: transparent; }
+.scrollable::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.badge-resolved {
+  background: #DCFCE7; color: #15803D;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px; letter-spacing: 0.02em;
+}
+
+.badge-referred {
+  background: #FEF3C7; color: #B45309;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px; letter-spacing: 0.02em;
+}
+
+.badge-pending {
+  background: #FEF3C7; color: #B45309;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px;
+}
+
+.badge-booked {
+  background: #DBEAFE; color: #1D4ED8;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px;
+}
+
+.badge-seen {
+  background: #DCFCE7; color: #15803D;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px;
 }
